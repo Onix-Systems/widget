@@ -2,24 +2,26 @@
   "name": "widget",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "rm -rf dist && mkdir dist",
+    "prebuild": "rm -rf dist && mkdir dist && cp src/index.html dist/index.html",
     "build-main": "uglifyjs ./src/main.js -o ./dist/main.js -c -m --lint",
     "build-widget": "./node_modules/.bin/webpack",
     "build": "npm run build-widget && npm run build-main",
-    "dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server"
+    "dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server",
+    "start": "npm run build && ./node_modules/.bin/static dist"
   },
   "dependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
     "material-ui": "^0.15.4",
+    "node-static": "^0.7.8",
     "node-uuid": "^1.4.7",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-object-rest-spread": "^6.8.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
     "uglify-js": "^2.7.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
