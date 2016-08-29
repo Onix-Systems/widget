@@ -8,15 +8,6 @@
     "build": "npm run build-widget && npm run build-main",
     "dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server"
   },
-  "devDependencies": {
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-object-rest-spread": "^6.8.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "uglify-js": "^2.7.3",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.0"
-  },
   "dependencies": {
     "material-ui": "^0.15.4",
     "node-uuid": "^1.4.7",
@@ -24,6 +15,13 @@
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^1.0.0",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "uglify-js": "^2.7.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0"
   }
 }
