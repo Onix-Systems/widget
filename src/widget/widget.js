@@ -15,9 +15,10 @@ document.body.appendChild(container);
 
 const store = configureStore();
 
-// We can do server request like that
-// or wait for data, set it with configureStore
-// and then render widget
+// We can render immediately and wait
+// for data from server. Or we can
+// wait data, set it with configureStore
+// and then render widget.
 setTimeout(
   () => store.dispatch(setWidth(1000)),
   1000
