@@ -7,24 +7,20 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-
 export default class HorizontalLinearStepper extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      finished: false,
       stepIndex: 0
     };
   }
 
   handleNext() {
     const { stepIndex } = this.state;
-    const { screens } = this.props;
 
     this.setState({
-      stepIndex: stepIndex + 1,
-      finished: stepIndex > screens.length - 2,
+      stepIndex: stepIndex + 1
     });
   };
 
@@ -36,7 +32,7 @@ export default class HorizontalLinearStepper extends Component {
   };
 
   render() {
-    const { finished, stepIndex } = this.state;
+    const { stepIndex } = this.state;
     const { screens } = this.props;
     const contentStyle = { margin: '0 16px' };
 
@@ -50,36 +46,29 @@ export default class HorizontalLinearStepper extends Component {
           )}
         </Stepper>
         <div style={contentStyle}>
-          {finished ? (
-            <p>
-              <a
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  this.setState({ stepIndex: 0, finished: false });
-                }}
-              >
-                Click here
-              </a> to reset the example.
-            </p>
-          ) : (
-            <div>
-              {screens[stepIndex].screen}
-              <div style={{ marginTop: 12 }}>
-                <FlatButton
-                  label="Back"
-                  disabled={stepIndex === 0}
-                  onTouchTap={() => this.handlePrev()}
-                  style={{ marginRight: 12 }}
-                />
-                <RaisedButton
-                  label={stepIndex === screens.length - 1 ? 'Finish' : 'Next'}
-                  primary={true}
-                  onTouchTap={() => this.handleNext()}
-                />
-              </div>
+          <div>
+            {screens[stepIndex].screen}
+            <div style={{ marginTop: 12 }}>
+              <FlatButton
+                label="Back"
+                disabled={stepIndex === 0}
+                onTouchTap={() => this.handlePrev()}
+                style={{ marginRight: 12 }}
+              />
+              <RaisedButton
+                label={stepIndex === screens.length - 1 ? 'Finish' : 'Next'}
+                primary={true}
+                onTouchTap={
+                  stepIndex !== screens.length - 1 ?
+                    () => this.handleNext() :
+                    event => {
+                      event.preventDefault();
+                      this.setState({ stepIndex: 0 });
+                    }
+                }
+              />
             </div>
-          )}
+          </div>
         </div>
       </div>
     );

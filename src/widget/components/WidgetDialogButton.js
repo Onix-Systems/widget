@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import WidgetDialog from './WidgetDialog';
-import WidgetScreen1 from './WidgetScreen1';
 
 export default class WidgetDialogButton extends Component {
   constructor(props, context) {
@@ -21,20 +20,8 @@ export default class WidgetDialogButton extends Component {
   }
 
   render() {
-    const screens = [
-      {
-        text: 'Screen 1',
-        screen: <WidgetScreen1/>
-      },
-      {
-        text: 'Screen 1',
-        screen: <WidgetScreen1/>
-      },
-      {
-        text: 'Screen 1',
-        screen: <WidgetScreen1/>
-      }
-    ];
+    const { open } = this.state;
+    const { screens } = this.props;
 
     return (
       <div>
@@ -43,7 +30,7 @@ export default class WidgetDialogButton extends Component {
           onTouchTap={() => this.openDialog()}
         />
         <WidgetDialog
-          open={this.state.open}
+          open={open}
           onRequestClose={() => this.closeDialog()}
           screens={screens}
         />

@@ -1,17 +1,8 @@
-import * as ActionTypes from '../constants/TextBoxActionTypes';
-import { v4 } from 'node-uuid';
+import { combineReducers } from 'redux';
+import textBoxes from './textBoxes';
+import settings from './settings';
 
-const initialState = {};
-
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case ActionTypes.ADD_TEXT_BOX:
-      return {
-        ...state,
-        [v4()]: action.textBox
-      };
-
-    default:
-      return state;
-  }
-};
+export default combineReducers({
+  textBoxes,
+  settings
+});

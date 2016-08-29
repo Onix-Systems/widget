@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import WidgetScreens from './WidgetScreens';
 
-export default ({
+const render = ({
   open,
   onRequestClose,
-  screens
+  screens,
+  width
 }) => (
   <Dialog
+    contentStyle={{ width }}
     title="Widget dialog"
     open={open}
     onRequestClose={onRequestClose}
@@ -15,3 +18,9 @@ export default ({
     <WidgetScreens screens={screens}/>
   </Dialog>
 );
+
+export default connect(
+  ({ settings }) => ({
+    width: settings.width
+  })
+)(render);
